@@ -1,0 +1,28 @@
+MiastoBezBarier — tekstowa alternatywa filmu demonstracyjnego
+Wersja A + D + E. Film trwa 2 min 30 s, zawiera polskie napisy i nie ma ścieżki dźwiękowej.
+
+1. Ekran główny
+Aplikacja pokazuje potrzeby, wyszukiwarkę, listę i mapę. Cztery miejsca są fikcyjne, z etykietami DEMO. W filmie nie włączono podkładu ulic. Lista jest tekstową alternatywą dla współrzędnych na mapie.
+
+2. Potrzeby i hotel
+Wybrano wejście bez schodów, windę i minimalną szerokość drzwi 90 cm. Wyszukano Hotel Przystań — DEMO. Dane demonstracyjne wskazują wejście bez schodów, windę i jej działanie oraz szerokość 96 cm. Są to cztery zgodności w danych, nie gwarancja aktualnego stanu obiektu. Źródła każdej cechy można rozwinąć; daty edycji i pobrania są osobne.
+
+3. Brak danych i stare informacje
+Galeria Otwarta — DEMO ma brak danych toalety. Brak nie jest potwierdzeniem dostępności. Biblioteka Sąsiedzka — DEMO ma starsze informacje. Ponowne pobranie kopii nie odnawia daty potwierdzenia cechy.
+
+4. Obserwacja awarii
+Dla hotelu wybrano cechę „Działająca winda”, wartość „Nie” i opis: „Winda nie uruchamia się. Obsługa informuje o awarii.”. Formularz nie pyta o imię, e-mail ani diagnozę. Po publikacji zgłoszenie jest niezweryfikowane i ważne 48 godzin.
+
+5. Widoczny konflikt
+Dane demo mówią „Tak”, zgłoszenie „Nie”. Karta działania windy pokazuje „Sprzeczne informacje” oraz oba źródła. Winda istnieje, ale jej działanie jest osobną cechą. Użytkownik powinien sprawdzić stan przed wizytą.
+
+6. Potwierdzenia społeczności
+W tle dwie inne, oddzielne sesje przeglądarki potwierdzają obserwację. Główny ekran jest odświeżany po każdej. Autor nie może potwierdzić własnego zgłoszenia. Po dwóch innych sesjach status brzmi „Potwierdzone w sesjach”. Licznik dotyczy sesji, nie zweryfikowanych osób. Konflikt nadal pozostaje — głosowanie go nie rozstrzyga.
+
+7. Integracja partnera
+Widok dla partnerów pokazuje rzeczywistą odpowiedź JSON API oraz osadzony widget tego samego hotelu. Widget wyświetla wejście bez schodów, istnienie windy, konflikt jej działania i toaletę. API zawiera statusy, dowody, daty i brak pojedynczej rozstrzygniętej wartości dla konfliktu. UI i partnerzy korzystają z jednego silnika.
+
+8. Prywatność i rozwój
+Na stronie o danych pokazano minimalizację informacji: preferencje lokalne, komentarz i pseudonimowa sesja; IP używane do limitowania żądań. Dalszy plan obejmuje testy z użytkownikami i czytnikiem, moderację, aktualizację danych i pilotaż poza UMK. Aplikacja użytkownika ma pozostać bezpłatna; integracje B2B są propozycją finansowania, a nie wdrożonym abonamentem.
+
+Zakończenie: MiastoBezBarier — prototyp działa; kolejnym krokiem są testy i pilotaż.

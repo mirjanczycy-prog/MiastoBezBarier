@@ -1,0 +1,470 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AccessCity API",
+    "version": "1.0.0",
+    "description": "Prototyp A + D + E. GET publiczne; POST wymaga cookies sesji i CSRF. Potwierdzenia liczą sesje, nie tożsamości."
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "paths": {
+    "/api/session": {
+      "get": {
+        "summary": "Pobierz sesję anonimową i token CSRF",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          }
+        }
+      }
+    },
+    "/api/features": {
+      "get": {
+        "summary": "Katalog cech i jednostek",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          }
+        }
+      }
+    },
+    "/api/places": {
+      "get": {
+        "summary": "Wyszukaj miejsca",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          }
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "city",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "demo",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ]
+      }
+    },
+    "/api/search": {
+      "get": {
+        "summary": "Wyszukaj miejsca i porównaj z preferencjami",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          }
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "demo",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "hideKnownBarriers",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "stepFree",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "toilet",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "elevator",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "avoidCobblestone",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "minDoorWidthCm",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "maxThresholdCm",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/api/places/{id}": {
+      "get": {
+        "summary": "Szczegóły miejsca",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/places/{id}/accessibility": {
+      "get": {
+        "summary": "Cechy, źródła, sprzeczności i dopasowanie",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "stepFree",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "toilet",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "elevator",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "avoidCobblestone",
+            "in": "query",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "name": "minDoorWidthCm",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "maxThresholdCm",
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ]
+      }
+    },
+    "/api/places/{id}/reports": {
+      "get": {
+        "summary": "Zgłoszenia publiczne (bez identyfikatorów sesji)",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "Dodaj obserwację",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          },
+          "201": {
+            "description": "Zgłoszenie utworzone"
+          },
+          "409": {
+            "description": "Własne, powtórne lub wygasłe potwierdzenie / import już trwa"
+          },
+          "429": {
+            "description": "Limit żądań"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-CSRF-TOKEN",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "feature",
+                  "value",
+                  "comment"
+                ],
+                "properties": {
+                  "feature": {
+                    "type": "string",
+                    "example": "elevatorOperational"
+                  },
+                  "value": {
+                    "type": "string",
+                    "example": "false"
+                  },
+                  "comment": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 500
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/reports/{id}/confirm": {
+      "post": {
+        "summary": "Potwierdź obserwację w innej sesji",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          },
+          "409": {
+            "description": "Własne, powtórne lub wygasłe potwierdzenie / import już trwa"
+          },
+          "429": {
+            "description": "Limit żądań"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-CSRF-TOKEN",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/api/providers/status": {
+      "get": {
+        "summary": "Stan i konfiguracja importu OSM",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          }
+        }
+      }
+    },
+    "/api/admin/import/osm": {
+      "post": {
+        "summary": "Ręczny import OSM (administrator poza Development)",
+        "responses": {
+          "200": {
+            "description": "Sukces"
+          },
+          "400": {
+            "description": "Błędne dane lub token CSRF"
+          },
+          "404": {
+            "description": "Nie znaleziono"
+          },
+          "409": {
+            "description": "Własne, powtórne lub wygasłe potwierdzenie / import już trwa"
+          },
+          "429": {
+            "description": "Limit żądań"
+          },
+          "503": {
+            "description": "Źródło niedostępne; zapisane dane zachowane"
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Admin-Key",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-CSRF-TOKEN",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

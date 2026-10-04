@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-04",
+  "environment": "Headless Chromium, 1440x900, rzeczywiste zdarzenia klawiatury; bez czytnika ekranu",
+  "results": [
+    "Link pomijania nawigacji: Tab i Enter",
+    "Preferencja wejścia: Tab i Spacja",
+    "Preferencja windy i szerokość: klawiatura",
+    "Zastosowanie preferencji: Enter",
+    "Wyszukiwanie hotelu: klawiatura",
+    "Dialog: fokus wewnątrz, Escape, powrót fokusu"
+  ]
+}

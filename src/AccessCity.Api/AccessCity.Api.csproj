@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="../AccessCity.Core/AccessCity.Core.csproj" />
+    <ProjectReference Include="../AccessCity.Infrastructure/AccessCity.Infrastructure.csproj" />
+    <ProjectReference Include="../AccessCity.DataProviders/AccessCity.DataProviders.csproj" />
+  </ItemGroup>
+</Project>

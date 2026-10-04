@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MiastoBezBarier — miejsca bez domysłów</title>
+<link rel="stylesheet" href="/vendor/leaflet/leaflet.css"><link rel="stylesheet" href="/styles.css">
+<script src="/vendor/leaflet/leaflet.js" defer></script><script src="/app.js" type="module"></script></head>
+<body>
+<a class="skip" href="#results">Przejdź do listy miejsc</a>
+<header class="topbar"><a class="brand" href="/" aria-label="MiastoBezBarier — strona główna"><span class="brandmark" aria-hidden="true">M</span>MiastoBezBarier<span class="branddot">.</span></a>
+<nav aria-label="Nawigacja główna"><a class="active" href="/" aria-current="page">Odkrywaj miejsca</a><a href="/developers.html">Dla partnerów</a><a href="/about.html">O danych</a></nav>
+<span class="citypill"><span aria-hidden="true">◎</span> Kraków</span></header>
+<main>
+<section class="hero"><div><p class="eyebrow">WIĘCEJ INFORMACJI. MNIEJ NIEWIADOMYCH.</p><h1>Miejsca bez domysłów.</h1><p>Sprawdź bariery i udogodnienia. Zdecyduj, co odpowiada Twoim potrzebom.</p></div><div class="heronote"><span aria-hidden="true">↗</span><p>Każda informacja<br><strong>ma swoje źródło.</strong></p></div></section>
+<div id="notice" class="notice" role="status" aria-live="polite">Tryb demo: fikcyjne miejsca i przykładowe dane. Możesz też pobrać rzeczywiste miejsca z OSM.</div>
+<div class="workspace">
+<aside class="filters" aria-label="Preferencje i filtry">
+<div class="sectiontitle"><h2>Twoje potrzeby</h2><button id="reset" class="textbtn" type="button">Wyczyść</button></div>
+<p class="muted small">Wybierz udogodnienia. Preferencje zapisujemy tylko w tej przeglądarce.</p>
+<form id="preferences">
+<fieldset><legend class="sr-only">Udogodnienia</legend>
+<label class="check"><input type="checkbox" name="stepFree"><span>Wejście bez schodów</span></label>
+<label class="check"><input type="checkbox" name="toilet"><span>Toaleta dostępna</span></label>
+<label class="check"><input type="checkbox" name="elevator"><span>Winda i jej działanie</span></label>
+<label class="check"><input type="checkbox" name="avoidCobblestone"><span>Unikam bruku</span></label>
+</fieldset>
+<label class="field">Minimalna szerokość drzwi <span class="inputunit"><input name="minDoorWidthCm" type="number" min="0" max="500" step="1" placeholder="np. 90"><span>cm</span></span></label>
+<label class="field">Maksymalna wysokość progu <span class="inputunit"><input name="maxThresholdCm" type="number" min="0" max="500" step="0.5" placeholder="np. 2"><span>cm</span></span></label>
+<hr><label class="field">Rodzaj miejsca<select name="category"><option value="">Wszystkie miejsca</option><option value="hotel">Hotele</option><option value="cafe">Kawiarnie</option><option value="restaurant">Restauracje</option><option value="museum">Muzea i galerie</option><option value="library">Biblioteki</option></select></label>
+<label class="field">Źródło miejsc<select name="data"><option value="">Wszystkie</option><option value="true">Dane demonstracyjne</option><option value="false">Rzeczywiste miejsca OSM</option></select></label>
+<label class="check small"><input type="checkbox" name="hideKnownBarriers"><span>Ukryj miejsca z rozpoznaną barierą</span></label>
+<p class="muted small">Miejsca z brakami lub konfliktem nadal są widoczne. Sprawdź szczegóły przed wizytą.</p>
+<button class="primary full" type="submit">Zastosuj preferencje <span aria-hidden="true">→</span></button>
+</form>
+<div class="sourcebox"><span class="eyebrow">ŹRÓDŁA DANYCH</span><p id="provider-status">OpenStreetMap + społeczność</p><button class="secondary full" id="import" type="button">Pobierz miejsca z OSM</button><p class="muted small">Import wybranego obszaru Krakowa. Zapisane dane działają również offline.</p></div>
+</aside>
+<section class="results" id="results" tabindex="-1" aria-label="Lista miejsc">
+<form id="search" role="search"><label class="sr-only" for="query">Szukaj miejsca lub adresu</label><div class="searchbox"><span aria-hidden="true">⌕</span><input id="query" type="search" maxlength="200" placeholder="Nazwa miejsca lub adres…"><button type="submit" aria-label="Wyszukaj">→</button></div></form>
+<div class="listheading"><h2>Odkrywaj miejsca</h2><span id="count" class="counter">—</span></div>
+<p class="muted small">Mapa i lista pokazują te same miejsca.</p>
+<div id="place-list" aria-live="polite"></div>
+</section>
+<section class="explore" aria-label="Mapa i szczegóły miejsca">
+<div class="mapwrap"><div class="maptools"><span id="map-label">Widok lokalizacji · bez podkładu</span><button id="tiles" type="button" class="secondary">Włącz mapę OSM</button></div><div id="map" aria-label="Lokalizacje miejsc; wszystkie dostępne w liście tekstowej"></div><p class="mapcaption">Lokalizacje demo są przykładowe. © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · ODbL</p></div>
+<div id="detail" class="detail" aria-live="polite"><p class="muted">Wybierz miejsce z listy, aby zobaczyć źródła i bariery.</p></div>
+</section>
+</div>
+</main>
+<footer><span>MiastoBezBarier · Kraków bez barier</span><span>Informacja wspiera decyzję. Nie zastępuje potwierdzenia stanu miejsca.</span></footer>
+<dialog id="report-dialog" aria-labelledby="report-title"><form id="report-form"><div class="sectiontitle"><h2 id="report-title">Dodaj obserwację</h2><button type="button" id="close-report" class="iconbtn" aria-label="Zamknij formularz">×</button></div><p class="muted">Opisz to, co widzisz. Nie podawaj danych osobowych.</p>
+<label class="field">Co chcesz zgłosić?<select id="report-feature" required></select></label><label class="field" id="report-value-label">Zaobserwowana wartość<span id="report-value-slot"></span></label>
+<label class="field">Opis obserwacji<textarea id="report-comment" required maxlength="500" rows="3" placeholder="Np. winda nie uruchamia się; informacja od obsługi."></textarea></label>
+<p class="muted small">Działanie windy: ważność 48 godzin. Inne cechy: 30 dni. Zgłoszenie od razu widoczne jako niezweryfikowane.</p>
+<p id="report-error" class="error" role="alert"></p><button class="primary full" type="submit">Opublikuj zgłoszenie</button></form></dialog>
+</body></html>

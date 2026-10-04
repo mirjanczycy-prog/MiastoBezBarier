@@ -1,0 +1,9 @@
+services:
+  accesscity:
+    build: .
+    ports: ["5080:8080"]
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    volumes: ["accesscity-data:/data"]
+volumes:
+  accesscity-data:
